@@ -1,0 +1,7 @@
+{"level":"info","message":"Server running on port 8000 in development mode","service":"tcti-auth-api","timestamp":"2025-11-18T17:00:59.881Z"}
+{"level":"info","message":"GET / - ::1","service":"tcti-auth-api","timestamp":"2025-11-18T17:01:13.202Z"}
+{"level":"info","message":"GET /favicon.ico - ::1","service":"tcti-auth-api","timestamp":"2025-11-18T17:01:13.543Z"}
+{"level":"info","message":"GET /api/login - ::1","service":"tcti-auth-api","timestamp":"2025-11-18T17:01:22.923Z"}
+{"level":"info","message":"GET /api/verify - ::1","service":"tcti-auth-api","timestamp":"2025-11-18T17:01:26.696Z"}
+{"level":"info","message":"SIGINT received, shutting down gracefully","service":"tcti-auth-api","timestamp":"2025-11-18T17:05:15.928Z"}
+{"level":"info","message":"Server running on port 8000 in development mode","service":"tcti-auth-api","timestamp":"2025-11-18T17:05:19.201Z"}
