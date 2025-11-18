@@ -1,41 +1,27 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import { getLocalIP } from './lib/networkUtils.js';
-import { securityMiddleware } from './lib/security.js';
-import { getLoginJson } from './api/scrap-login.js';
-import authRouter from './api/authRouter.js';
+const app = require('./src/app');
+const config = require('./src/config/config');
+const logger = require('./src/utils/logger');
 
-dotenv.config();
-const app = express();
-const PORT = process.env.PORT || 3000;
-const LOCAL_IP = getLocalIP();
-
-// Mount PUBLIC scraper endpoint BEFORE security middleware
-+ app.get('/login.json', getLoginJson);
-
-// Security middleware for ALL other routes
-app.use(securityMiddleware);
-app.use(express.json({ limit: '10kb' }));
-
-// API routes
-app.use('/api', authRouter);
-
-// Health check
-app.get('/health', (req, res) => {
-  const now = Date.now();
-  res.json({ 
-    status: 'ok',
-    scraper: {
-      lastUpdate: new Date(cache.lastUpdate).toISOString(),
-      nextUpdate: new Date(cache.lastUpdate + CACHE_TTL).toISOString(),
-      stale: (now - cache.lastUpdate) > CACHE_TTL
-    }
-  });
+// Graceful shutdown handling
+process.on('SIGTERM', () => {
+  logger.info('SIGTERM received, shutting down gracefully');
+  process.exit(0);
 });
 
-app.listen(PORT, () => {
-  console.log(`\n✅ Server Running`);
-  console.log(`🌐 Local Access: http://localhost:${PORT}/login.json`);
-  console.log(`📡 Network Access: http://${LOCAL_IP}:${PORT}/login.json`);
-  console.log(`⏱️  Background scraper updating every 60 seconds\n`);
+process.on('SIGINT', () => {
+  logger.info('SIGINT received, shutting down gracefully');
+  process.exit(0);
+});
+
+// Start the server
+const server = app.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT} in ${config.NODE_ENV} mode`);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err) => {
+  logger.error('Unhandled Promise Rejection:', err);
+  server.close(() => {
+    process.exit(1);
+  });
 });
