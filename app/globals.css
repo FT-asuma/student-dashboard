@@ -1,8 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #6A5AE0;
   --foreground: #171717;
+  --middle-ground: #8B7CE8;
+  --end-ground: #A594F9;
+  --input-grey: #F7F7FA;
+  --focus-ring: #6A5AE0;
+  --link: #6A5AE0;
+  --link-hover: #8B7CE8;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--link-hover);
 }
 
 @theme inline {
@@ -14,7 +30,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #6A5AE0;
     --foreground: #ededed;
   }
 }
@@ -22,5 +38,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins-sans), sans-serif;
 }
