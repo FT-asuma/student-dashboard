@@ -32,13 +32,13 @@ const Login = () => {
               </defs>
             </svg>
             <div className="">
-              <h3 className="text-sm text-gray-900 font-semibold">HEMIN Portal</h3>
-              <p className="text-gray-500">STUDENT SYSTEM</p>
+              <h3 className="text-sm text-gray-900 font-semibold">Toshkent kimyo-texnologiya instituti</h3>
+              <p className="text-gray-500">STUDENT PORTAL</p>
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <h1 className="text-2xl font-medium text-gray-900 mb-2">Welcome Back</h1>
-            <p className="text-gray-600 text-sm">Sign in to access your student portal</p>
+            <h1 className="text-2xl font-medium text-gray-900 mb-2">ASUMA Student axborot tizimi</h1>
+            <p className="text-gray-600 text-sm">Talaba portalingizga kirish uchun tizimga kiring</p>
           </div>
           <Form />
         </div>
